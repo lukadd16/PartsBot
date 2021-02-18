@@ -9,7 +9,7 @@ from google_trans_new import google_translator
 from google_trans_new import constant
 
 
-red = discord.Colour(0x1e807c)
+red = discord.Colour(0x1e807c)  # Should be in a config file
 
 # Instantiate required objects
 translator = google_translator()
@@ -20,7 +20,7 @@ supp_languages = constant.LANGUAGES
 
 
 async def log(bot, command, ctx):
-    logs = bot.get_channel(769906608318316594)
+    logs = bot.get_channel(769906608318316594)  # Should be in a config file
     embed_msg = discord.Embed(
         title=f"Command '{command}' used by {str(ctx.message.author)}.",
         description=f"**Text:**\n{ctx.message.content}\n\n"
@@ -169,6 +169,7 @@ class Utility(commands.Cog):
         await ctx.author.send(embed=embed_msg)
         await ctx.message.add_reaction('📨')
 
+    # This is a very hacky way of doing a timer, might want to consider tasks instead
     @commands.command()
     async def timer(self, ctx, time: str):
         symbols = {
